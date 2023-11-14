@@ -714,7 +714,7 @@ fieldset legend {
   text-decoration: underline;
 }
 
-.popup {
+.popup1 {
         display: none;
         position: fixed;
         top: 50%;
@@ -737,7 +737,7 @@ border: 1px solid #000;
         cursor: pointer;
     }
 
-.modal {
+.popup {
   display: none;
 }
 
