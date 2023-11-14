@@ -11,7 +11,7 @@
 		<div class="main-grid">
 			<header class="header">
 				<div class="container header__container">
-					<div class="header__menu-main" aria-label="Primary">
+					<nav class="header__menu-main" aria-label="Primary">
 						<ul class="menu">
 							<li class="menu__item">
 								<a class="menu__link" href="#">Women</a>
@@ -26,7 +26,7 @@
 								<a class="menu__link" href="#">Company</a>
 							</li>
 							<a class="header__logo" href="/">
-								<img class="header__logo-picture" src="images/logo.svg" alt="HomePage Susparsa Logo">
+								<img class="header__logo-picture" src="images/logo.svg" alt="Susparsa Home Page">
 							</a>
 							<li class="menu__item">
 								<a class="menu__link" href="#">Account</a>
@@ -38,13 +38,13 @@
 								<a class="menu__link" href="#">Cart (0)</a>
 							</li>
 						</ul>
-					</div>
+					</nav>
 				</div>
 			</header>
 
 			<main class="page-content">
 				<div class="container">
-					<div>
+					<nav aria-label="breadcrumbs">
 						<ul class="breadcrumbs">
 							<li class="breadcrumbs__item">
 								<a class="breadcrumbs__link" href="#">Home</a>
@@ -56,7 +56,7 @@
 								<span class="breadcrumbs__current">White unisex t-shirt</span>
 							</li>														
 						</ul>
-					</div>
+					</nav>
 
 					<div class="product-card" id="skipLinkTarget">
 						<div class="product-card__right">
@@ -73,11 +73,10 @@
 										<option value="l">L</option>
 										<option value="xl">XL</option>
 									</select>
-									<a class="size-guide-link modal-target" href="#sizeGuide">Size Guide</a>
-									<div class="modal">
-										<div class="modal-backdrop">
-											<div class="modal-body size-guide">
+									<button class="size-guide-link modal-target" id="openButton" type="button">Size Guide</button>
+<div class="popup size-guide" id="popup" tabindex="0" aria-modal="true" role="dialog">
 												<h3 class="heading-2">Size guide</h3>
+												        <button class="close" id="closeButton" type="button" tabindex="0">Close</button>
 												<p>Some description about the sizes</p>
 												<table class="size-guide__table">
 													<tr>
@@ -101,10 +100,8 @@
 														<td>11</td>
 													</tr>
 												</table>
-											</div>
-										</div>
-
 									</div>
+
 								</div>
 								<fieldset class="product-card__parameter">
 									<legend class="product-card__label">Color<span> - <span id="productColorValue">White</span></span></legend>
@@ -177,7 +174,7 @@
 						</div>						
 						<div class="product-card__left">
 							<div class="product-card__photo-big">
-								<img class="product-card__photo-big-picture" src="images/photo1.jpg" srcset="images/photo1_x2.jpg 2x" alt="A Girl in White Unisex T-shirt">
+								<img class="product-card__photo-big-picture" src="images/photo1.jpg" srcset="images/photo1_x2.jpg 2x" alt="A Girl in WhiteT-shirt">
 							</div>
 							<div class="accordion" aria-label="Product info">
 								<div class="accordion__item">

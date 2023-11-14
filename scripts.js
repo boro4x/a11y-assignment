@@ -1,4 +1,55 @@
 window.addEventListener("DOMContentLoaded", () => {
+const openButton = document.getElementById('openButton');
+const popup = document.getElementById('popup');
+const closeButton = document.getElementById('closeButton');
+const focusableElements = popup.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+const firstElement = focusableElements[0];
+const lastElement = focusableElements[focusableElements.length - 1];
+
+openButton.addEventListener('click', () => {
+    popup.style.display = 'flex';
+    popup.focus(); // Установка фокуса на всплывающее окно
+});
+
+closeButton.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+popup.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        popup.style.display = 'none';
+        openButton.focus(); // Возвращение фокуса на кнопку "Открыть всплывающее окно"
+    }
+
+    if (event.key === 'Tab' && !event.shiftKey) {
+        if (document.activeElement === lastElement) {
+            event.preventDefault();
+            firstElement.focus();
+        }
+    } else if (event.key === 'Tab' && event.shiftKey) {
+        if (document.activeElement === firstElement) {
+            event.preventDefault();
+            lastElement.focus();
+        }
+    }
+});
+
+popup.addEventListener('focusin', (event) => {
+    if (!popup.contains(event.target)) {
+        firstElement.focus();
+    }
+});
+
+// Добавляем обработчик события для закрытия по клику вне всплывающего окна
+document.addEventListener('click', (event) => {
+    const isClickInsidePopup = popup.contains(event.target);
+    const isClickOnOpenButton = event.target === openButton;
+
+    if (!isClickInsidePopup && !isClickOnOpenButton) {
+        popup.style.display = 'none';
+    }
+});
+
   const inputsColor = document.querySelectorAll('input[name=product_color]');
   const formColorLabel = document.getElementById('productColorValue');
   inputsColor.forEach((input) => {
@@ -35,26 +86,4 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });    
   });
-
-  const modalTarget = document.querySelectorAll('.modal-target');
-  modalTarget.forEach((modalTarget)=> {
-    modalTarget.addEventListener('click', ()=>{
-      const modalWindow = document.querySelector('.modal');
-      showModal(modalWindow);
-    });
-  });
-  const modalBackdrop = document.querySelectorAll('.modal-backdrop');
-  modalBackdrop.forEach((modalBackdrop)=> {
-    modalBackdrop.addEventListener('click', (e) => {
-
-      const modalWindow = e.target.closest('.modal');
-      modalWindow.classList.remove('show-modal');
-    });
-  });
-
-  const showModal = (modalWindow) => {
-    modalWindow.classList.add('show-modal');
-  }
-
-
-})
+});
