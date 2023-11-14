@@ -7,7 +7,7 @@ const firstElement = focusableElements[0];
 const lastElement = focusableElements[focusableElements.length - 1];
 
 openButton.addEventListener('click', () => {
-    popup.style.display = 'flex';
+    popup.style.display = 'block';
     popup.focus(); // Установка фокуса на всплывающее окно
 });
 
